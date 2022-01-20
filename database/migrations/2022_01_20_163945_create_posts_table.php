@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->text('extract');
             $table->longText('body');
-            $table->enum('status', [0, 1])->default(0);
+            $table->integer('status')->default(0);
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
