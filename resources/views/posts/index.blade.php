@@ -6,7 +6,36 @@
                     <div class="v-full h-full px-8 flex flex-col justify-center">
                         <div>
                             @foreach($post->tags as $tag)
-                                <a href="{{$tag->slug}}" class="inline-block px-3 h-6 bg-{{$tag->color}}-600 text-white rounded-full">{{$tag->name}}</a>
+                                @php
+                                    switch($tag->color){
+                                        case "blue":                
+                                            $bgcolor = "bg-blue-500";                    
+                                        break;
+
+                                        case "green":                
+                                            $bgcolor = "bg-green-500";                    
+                                        break;
+
+                                        case "pink":                
+                                            $bgcolor = "bg-pink-500";                    
+                                        break;
+
+                                        case "purple":                
+                                            $bgcolor = "bg-purple-500";                    
+                                        break;
+
+                                        case "red":                
+                                            $bgcolor = "bg-red-500";                    
+                                        break;
+
+                                        case "indigo":                
+                                            $bgcolor = "bg-indigo-500";                    
+                                        break;
+
+                                        default: $bgcolor = "bg-red-500";
+                                    }
+                                @endphp
+                                <a href="{{route('posts.tag', $tag)}}" class="inline-block mb-2 px-3 h-6 {{$bgcolor}} text-white rounded-full">{{$tag->name}}</a>
                             @endforeach
                         </div> 
                         <h1 class="text-4xl text-white leading-8 font-bold">
