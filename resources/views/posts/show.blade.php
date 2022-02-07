@@ -6,9 +6,9 @@
             {{ $post->extract }}
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {{-- Contenido principal --}}
-            <div class="md:col-span-2">
+            <div class="sm:col-span-2">
                 <figure>
                     <img class="w-full h-80 object-cover object-center" src="{{Storage::url($post->image->url)}}" alt="">
                 </figure>
