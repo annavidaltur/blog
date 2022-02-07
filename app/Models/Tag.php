@@ -9,6 +9,10 @@ class Tag extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName(){
+        return "slug";
+    }
+    
     // Relación muchos a muchos
     public function posts(){
         return $this->belongsToMany(Post::class);
