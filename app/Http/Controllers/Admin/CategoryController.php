@@ -47,7 +47,7 @@ class CategoryController extends Controller
         $category->slug = Str::slug($request->name);
         $category->save();        
 
-        return redirect(route('admin.categories.edit', $category))->with('info', 'La categoría se ha creado con éxito'); ;
+        return redirect(route('admin.categories.edit', $category))->with('info', 'La categoría se ha creado con éxito');
     }
 
     /**
