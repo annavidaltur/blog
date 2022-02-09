@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -25,7 +29,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::pluck('name', 'id');
+        $tags = Tag::all();
+
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -34,9 +41,23 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(StorePostRequest $request)
+    {              
+        $post = new Post();
+        $post->user_id = $request->user_id;
+        $post->name = $request->name;
+        $post->slug = Str::slug($request->name);
+        $post->category_id = $request->category_id;
+        $post->status = $request->status;
+        $post->extract = $request->extract;
+        $post->body = $request->body;
+        $post->save();
+        
+        if($request->tags){
+            $post->tags()->attach($request->tags);
+        }
+
+        return redirect()->route('admin.posts.edit', $post);
     }
 
     /**

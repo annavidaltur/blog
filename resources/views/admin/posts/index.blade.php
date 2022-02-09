@@ -3,11 +3,12 @@
 @section('title', 'Mi blog')
 
 @section('content_header')
-    <h1>Mi super blog</h1>
+<a class="btn btn-secondary btn-sm float-right" href="{{route('admin.posts.create')}}">Nuevo post</a>    
+<h1>Lista de posts</h1>
+    
 @stop
 
 @section('content')
-
    @livewire('admin.posts-index')
 @stop
 

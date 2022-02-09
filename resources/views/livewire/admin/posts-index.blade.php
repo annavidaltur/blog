@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="car-header">
+    <div class="card-header">
         <input wire:model="search" class="form-control" placeholder="Buscar post"> 
     </div>
 
