@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class PostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,9 +13,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize()
     {
-        if($this->user_id == auth()->user()->id) // por si alguien cambia el hidden field
-            return true;
-        else return false;
+        return true;
     }
 
     /**
@@ -28,7 +26,8 @@ class StorePostRequest extends FormRequest
         // status = 0 (borrador)
         $rules = [
             'name' => 'required',
-            'status' => 'required|in:0,1'
+            'status' => 'required|in:0,1',
+            'file' => 'image',
         ];
 
         // status = 1 (publicado)

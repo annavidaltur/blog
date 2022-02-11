@@ -10,6 +10,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Estado</th>                    
                     <th colspan="2"></th>
                 </tr>
             </thead>
@@ -18,6 +19,7 @@
                     <tr>
                         <td>{{$post->id}}</td>
                         <td>{{$post->name}}</td>
+                        <td>@if($post->status == 0) Borrador @else Publicado @endif</td>
                         <td width="10px">
                             <a href="{{route('admin.posts.edit', $post)}}" class="btn btn-primary btn-sm">Editar</a>
                         </td>
