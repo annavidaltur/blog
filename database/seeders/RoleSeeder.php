@@ -20,15 +20,19 @@ class RoleSeeder extends Seeder
 
         Permission::create(['name' => 'admin.home'])->syncRoles([$role_admin, $role_blogger]);
         
-        Permission::create(['name' => 'admin.categories.index'])->syncRoles([$role_admin, $role_blogger]);
-        Permission::create(['name' => 'admin.categories.create'])->syncRoles([$role_admin, $role_blogger]);
-        Permission::create(['name' => 'admin.categories.edit'])->syncRoles([$role_admin, $role_blogger]);
-        Permission::create(['name' => 'admin.categories.destroy'])->syncRoles([$role_admin, $role_blogger]);
+        Permission::create(['name' => 'admin.users.index'])->syncRoles([$role_admin]);
+        Permission::create(['name' => 'admin.users.edit'])->syncRoles([$role_admin]);
+        Permission::create(['name' => 'admin.users.update'])->syncRoles([$role_admin]);
+        
+        Permission::create(['name' => 'admin.categories.index'])->syncRoles([$role_admin]);
+        Permission::create(['name' => 'admin.categories.create'])->syncRoles([$role_admin]);
+        Permission::create(['name' => 'admin.categories.edit'])->syncRoles([$role_admin]);
+        Permission::create(['name' => 'admin.categories.destroy'])->syncRoles([$role_admin]);
 
-        Permission::create(['name' => 'admin.tags.index'])->syncRoles([$role_admin, $role_blogger]);
-        Permission::create(['name' => 'admin.tags.create'])->syncRoles([$role_admin, $role_blogger]);
-        Permission::create(['name' => 'admin.tags.edit'])->syncRoles([$role_admin, $role_blogger]);
-        Permission::create(['name' => 'admin.tags.destroy'])->syncRoles([$role_admin, $role_blogger]);
+        Permission::create(['name' => 'admin.tags.index'])->syncRoles([$role_admin]);
+        Permission::create(['name' => 'admin.tags.create'])->syncRoles([$role_admin]);
+        Permission::create(['name' => 'admin.tags.edit'])->syncRoles([$role_admin]);
+        Permission::create(['name' => 'admin.tags.destroy'])->syncRoles([$role_admin]);
 
         Permission::create(['name' => 'admin.posts.index'])->syncRoles([$role_admin, $role_blogger]);
         Permission::create(['name' => 'admin.posts.create'])->syncRoles([$role_admin, $role_blogger]);

@@ -12,7 +12,6 @@ class PostsIndex extends Component
     protected $paginationTheme = "bootstrap";
     public $search;
 
-
     public function updatingSearch(){
         $this->resetPage();
     }
