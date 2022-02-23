@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\RoleController;
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
 
@@ -16,5 +17,7 @@ Route::resource('tags', TagController::class)->names('admin.tags');
 Route::resource('posts', PostController::class)->except('show')->names('admin.posts');
 
 Route::resource('users', UserController::class)->only(['index', 'edit', 'update'])->names('admin.users');
+
+Route::resource('roles', RoleController::class)->names('admin.roles');
 
 ?>
