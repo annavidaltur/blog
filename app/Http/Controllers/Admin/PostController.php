@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 
 class PostController extends Controller
 {
@@ -73,6 +74,8 @@ class PostController extends Controller
             ]);
         }
 
+        Cache::flush();
+
         return redirect()->route('admin.posts.edit', $post);
     }
 
@@ -126,6 +129,8 @@ class PostController extends Controller
             }
         }
 
+        Cache::flush();
+
         return redirect()->route('admin.posts.edit', $post)->with('info', 'El post se actualizó con éxito'); 
     }
 
@@ -140,6 +145,9 @@ class PostController extends Controller
         $this->authorize('author', $post);
         
         $post->delete();
+
+        Cache::flush();
+
         return redirect()->route('admin.posts.index')->with('info', 'El post se eliminó con éxito'); ;
     }
 }
